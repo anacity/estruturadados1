@@ -3,6 +3,7 @@
 #include <time.h>
 
 #define TAMANHO 500
+#define REP 1000
 
 int particionar(int *V, int inicio, int fim){
     int esq, dir, temp, indicePivo;
@@ -69,7 +70,7 @@ int main(){
     
     inicio = clock();
 
-    for (int rep = 0; rep < 1000; rep++) {
+    for (int x = 0; x < REP; x++) {
         for (int i = 0; i < TAMANHO; i++) {
             copia[i] = V[i];
         }
@@ -78,8 +79,9 @@ int main(){
 
     fim = clock();
     tempo_total = (double)(fim - inicio) / CLOCKS_PER_SEC;
+    float tempo_medio = tempo_total / REP;
 
-    printf("Tempo total para ordenar o vetor 1000 vezes: %.6f segundos\n", tempo_total);
+    printf("Tempo medio para ordenar o vetor %d vezes: %.6f segundos\n", REP, tempo_medio);
     
     printf("\nVetor ordenado (primeiros %d elementos):\n", TAMANHO);
     for (int i = 0; i < TAMANHO; i++) {
